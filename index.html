@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>FitMe: try outfits on before you wear them</title>
-<meta name="description" content="FitMe shows your own clothes on a lifelike avatar of you, so you can try an outfit before you get dressed and plan the whole week ahead." />
+<meta name="description" content="FitMe shows your own clothes on a lifelike avatar of you. Try outfits on, organise your wardrobe, plan the week, ask an AI stylist and find the colours that suit you." />
 <meta name="apple-itunes-app" content="app-id=6766146790" />
 <meta property="og:title" content="FitMe: try it before you wear it" />
-<meta property="og:description" content="See your clothes on a lifelike avatar of you and plan your week of outfits." />
+<meta property="og:description" content="Your wardrobe, on a lifelike avatar of you. Try on, plan the week, ask a stylist, find your colours." />
 <meta property="og:image" content="assets/poster.jpg" />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#ffffff" />
@@ -27,42 +27,65 @@
     --serif: "Instrument Serif", "Times New Roman", serif;
     --sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --gutter: clamp(20px, 5vw, 56px);
+    --band: clamp(56px, 9vw, 120px);
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
   img, video { display: block; max-width: 100%; }
   img { height: auto; }
   a { color: inherit; }
+  p { margin: 0 0 14px; }
   :focus-visible { outline: 3px solid var(--plum); outline-offset: 3px; border-radius: 6px; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-inline: var(--gutter); }
+  section[id] { scroll-margin-top: 24px; }
+
+  h1, h2 { font-family: var(--serif); font-weight: 400; margin: 0; }
+  h1 { font-size: clamp(50px, 8.2vw, 100px); line-height: 0.96; letter-spacing: -0.02em; margin-bottom: 28px; }
+  h1 span { display: block; white-space: nowrap; }
+  h1 .second { font-style: italic; padding-left: 0.5em; }
+  h2 { font-size: clamp(38px, 5.2vw, 68px); line-height: 1.02; letter-spacing: -0.015em; margin-bottom: 20px; }
+  h3 { margin: 0 0 6px; font: 600 19px/1.3 var(--sans); }
+  .measure { max-width: 30em; }
 
   /* top bar */
-  .bar { display: flex; align-items: center; justify-content: space-between; padding-block: 18px; }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 18px; }
   .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-family: var(--serif); font-size: 30px; line-height: 1; }
   .brand img { width: 40px; height: 40px; border-radius: 10px; }
+  .bar nav { display: flex; gap: 26px; font-size: 15px; }
+  .bar nav a { text-decoration: none; color: #2b2829; }
+  .bar nav a:hover { color: var(--plum); }
   .get { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 26px; border-radius: 999px; background: var(--ink); color: #fff; text-decoration: none; font-weight: 600; font-size: 16px; white-space: nowrap; }
   .get:hover { background: var(--plum); }
   .bar .get { min-height: 42px; padding: 0 18px; font-size: 15px; }
 
   /* hero */
   .hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(28px, 6vw, 88px); align-items: center; padding-block: clamp(16px, 4vw, 56px) clamp(48px, 8vw, 104px); }
-  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(50px, 8.2vw, 100px); line-height: 0.96; letter-spacing: -0.02em; margin: 0 0 28px; }
-  h1 span { display: block; white-space: nowrap; }
-  h1 .second { font-style: italic; padding-left: 0.5em; }
-  .lede { font-size: clamp(18px, 1.6vw, 21px); max-width: 30em; margin: 0 0 32px; color: #1d1b1c; }
+  .lede { font-size: clamp(18px, 1.6vw, 21px); max-width: 30em; margin-bottom: 32px; color: #1d1b1c; }
   .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
   .note { color: var(--stone); font-size: 15px; }
-
   .film { position: relative; justify-self: center; width: min(100%, 380px); aspect-ratio: 9 / 16; border-radius: 34px; overflow: hidden; background: var(--blush); box-shadow: 0 40px 80px -40px rgba(138, 50, 105, 0.55); }
   .film video { width: 100%; height: 100%; object-fit: cover; }
   .sound { position: absolute; right: 14px; bottom: 14px; min-height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: rgba(0, 0, 0, 0.62); color: #fff; font: 600 14px var(--sans); cursor: pointer; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
 
-  /* week */
-  .week { background: var(--blush); padding: clamp(56px, 9vw, 120px) 0; }
-  .week-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 6vw, 88px); align-items: center; }
-  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5.6vw, 76px); line-height: 1; letter-spacing: -0.015em; margin: 0 0 20px; }
-  .week p { max-width: 28em; margin: 0 0 14px; }
+  /* chapters: one feature each, text beside its picture */
+  .chapter { padding-block: var(--band); }
+  .chapter.tint { background: var(--blush); }
+  .chapter.rule { border-top: 1px solid var(--line); }
+  .pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 6vw, 88px); align-items: center; }
+  .pair.flip > :first-child { order: 2; }
+  .shot { justify-self: center; width: min(100%, 290px); border-radius: 42px; border: 9px solid var(--ink); overflow: hidden; background: #fff; }
+  .points { list-style: none; margin: 26px 0 0; padding: 0; max-width: 30em; }
+  .points li { padding: 14px 0; border-top: 1px solid var(--line); }
+  .tint .points li { border-color: #e9c9d6; }
+  .points strong { font-weight: 600; }
+
+  /* try-on: three looks, one avatar */
+  .looks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .looks img { border-radius: 20px; border: 1px solid var(--line); background: #fff; aspect-ratio: 3 / 4; object-fit: cover; width: 100%; }
+  .looks img:nth-child(2) { transform: translateY(28px); }
+
+  /* week planner */
   .planner { background: #fff; border-radius: 32px; padding: clamp(18px, 3vw, 30px); }
   .days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 18px; }
   .day { appearance: none; border: 0; background: none; padding: 6px 0 2px; cursor: pointer; font: inherit; color: var(--stone); display: grid; justify-items: center; gap: 8px; }
@@ -78,47 +101,78 @@
   .plan strong { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.1; }
   .plan span { color: var(--stone); font-size: 15px; text-align: right; }
 
+  /* three ways to decide */
+  .ways { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: clamp(28px, 4vw, 48px); border-top: 1px solid var(--ink); }
+  .ways div { padding: 26px 28px 6px 0; }
+  .ways div + div { padding-left: 28px; border-left: 1px solid var(--line); }
+  .ways h3 { font: 400 30px/1.1 var(--serif); margin-bottom: 10px; }
+  .ways p { color: #2b2829; }
+
+  /* colours */
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 26px; max-width: 26em; }
+  .swatches span { display: block; aspect-ratio: 1; border-radius: 14px; }
+  .swatches small { display: block; margin-top: 6px; font-size: 13px; color: var(--stone); line-height: 1.25; }
+  .canvas { border-radius: 28px; border: 1px solid var(--line); background: #fff; width: min(100%, 440px); justify-self: center; }
+
   /* steps */
-  .steps { padding: clamp(56px, 9vw, 120px) 0; }
-  .steps-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(28px, 6vw, 88px); align-items: center; }
-  .steps ol { list-style: none; margin: 34px 0 0; padding: 0; counter-reset: step; }
-  .steps li { counter-increment: step; display: grid; grid-template-columns: 2.4em 1fr; gap: 0 10px; padding: 22px 0; border-top: 1px solid var(--line); }
-  .steps li:last-child { border-bottom: 1px solid var(--line); }
-  .steps li::before { content: counter(step); font-family: var(--serif); font-size: 44px; line-height: 0.9; color: var(--plum); }
-  .steps h3 { margin: 0 0 4px; font: 600 19px/1.3 var(--sans); }
-  .steps li p { margin: 0; color: #2b2829; max-width: 32em; }
-  .shot { justify-self: center; width: min(100%, 280px); border-radius: 40px; border: 9px solid var(--ink); overflow: hidden; background: #fff; }
+  .steps ol { list-style: none; margin: 34px 0 0; padding: 0; counter-reset: step; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 clamp(20px, 4vw, 56px); }
+  .steps li { counter-increment: step; padding-top: 20px; border-top: 1px solid var(--ink); }
+  .steps li::before { content: counter(step); display: block; font-family: var(--serif); font-size: 56px; line-height: 1; color: var(--plum); margin-bottom: 10px; }
+  .steps li p { margin: 0; color: #2b2829; }
+
+  /* questions */
+  .faq { max-width: 760px; }
+  .faq details { border-top: 1px solid var(--line); }
+  .faq details:last-child { border-bottom: 1px solid var(--line); }
+  .faq summary { cursor: pointer; list-style: none; padding: 20px 36px 20px 0; font-weight: 600; font-size: 19px; position: relative; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; font: 400 30px/1 var(--serif); color: var(--plum); }
+  .faq details[open] summary::after { content: "\2212"; }
+  .faq details p { margin: 0 0 22px; max-width: 34em; color: #2b2829; }
 
   /* closing */
-  .close { text-align: center; padding: clamp(56px, 9vw, 112px) 0 clamp(64px, 9vw, 120px); border-top: 1px solid var(--line); }
+  .close { text-align: center; padding-block: clamp(56px, 9vw, 112px) clamp(64px, 9vw, 120px); background: var(--blush); }
   .close img { width: 96px; height: 96px; border-radius: 22px; margin: 0 auto 26px; }
   .close h2 { margin-bottom: 30px; }
-  footer { border-top: 1px solid var(--line); padding: 26px 0 110px; color: var(--stone); font-size: 15px; }
+  footer { padding: 26px 0 110px; color: var(--stone); font-size: 15px; }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: space-between; }
   footer nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 
   /* phone: one column, and the download button stays within reach */
   .dock { display: none; }
+  @media (max-width: 900px) { .bar nav { display: none; } }
   @media (max-width: 820px) {
-    .hero, .week-grid, .steps-grid { grid-template-columns: 1fr; }
+    .hero, .pair { grid-template-columns: 1fr; }
+    .pair.flip > :first-child { order: 0; }
     .hero { padding-top: 6px; }
     h1 { font-size: clamp(46px, 14.5vw, 76px); }
     h1 .second { padding-left: 0.3em; }
     .film { width: min(100%, 340px); }
-    .shot { width: min(64%, 250px); }
+    .shot { width: min(66%, 260px); }
     .day .n { width: 38px; height: 38px; font-size: 16px; }
     .day { font-size: 14px; }
+    .ways, .steps ol { grid-template-columns: 1fr; }
+    .ways div, .ways div + div { padding: 22px 0 8px; border-left: 0; border-top: 1px solid var(--line); }
+    .ways div:first-child { border-top: 0; }
+    .steps li { margin-bottom: 26px; }
     .bar .get { display: none; }
     .dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-top: 1px solid var(--line); }
     .dock .get { width: 100%; }
   }
-  @media (prefers-reduced-motion: reduce) { .look img, .day .n { transition: none; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .look img, .day .n { transition: none; } }
 </style>
 </head>
 <body>
 
 <header class="wrap bar">
   <a class="brand" href="#top" aria-label="FitMe"><img src="assets/icon.png" alt="" width="40" height="40" />FitMe</a>
+  <nav aria-label="Features">
+    <a href="#try-on">Try-on</a>
+    <a href="#planner">Planner</a>
+    <a href="#wardrobe">Wardrobe</a>
+    <a href="#stylist">Stylist</a>
+    <a href="#colors">Colours</a>
+  </nav>
   <a class="get" data-store href="https://apps.apple.com/app/id6766146790">Download on the App Store</a>
 </header>
 
@@ -138,12 +192,31 @@
     </div>
   </section>
 
-  <section class="week" aria-labelledby="week-title">
-    <div class="wrap week-grid">
+  <section class="chapter rule" id="try-on" aria-labelledby="tryon-title">
+    <div class="wrap pair">
+      <div>
+        <h2 id="tryon-title">Love the look. See it on you.</h2>
+        <p class="measure">One photo becomes your avatar, a full-length digital twin with your face and build. Pick a top, bottoms and shoes, and FitMe shows the outfit on you as a photorealistic image.</p>
+        <ul class="points">
+          <li><strong>Your clothes, not a catalogue.</strong> Try on what is already in your wardrobe, or a piece from a screenshot.</li>
+          <li><strong>Same you, any outfit.</strong> Change one piece and compare the looks side by side.</li>
+          <li><strong>Keep what works.</strong> Save the looks you like to your collection and wear them again.</li>
+        </ul>
+      </div>
+      <div class="looks">
+        <img src="assets/tryon-denim.jpg" alt="Avatar wearing a denim jacket, cream knit and pink trousers." width="720" height="960" loading="lazy" />
+        <img src="assets/tryon-coat.jpg" alt="The same avatar wearing a long brown coat over wide-leg jeans." width="720" height="960" loading="lazy" />
+        <img src="assets/tryon-pink.jpg" alt="The same avatar wearing a pink suit with feather cuffs." width="720" height="960" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter tint" id="planner" aria-labelledby="week-title">
+    <div class="wrap pair">
       <div>
         <h2 id="week-title">Your week, already dressed.</h2>
-        <p>Pick a day and decide what you are wearing while you are still on the sofa. Every outfit is shown on you, not on a model.</p>
-        <p>Tap through the week to see how it works.</p>
+        <p class="measure">Give each day its outfit while you are still on the sofa. The planner shows the weather where you are, so Monday's run and Friday's dinner are both sorted before the week starts.</p>
+        <p class="measure">Tap through the week to see how it works.</p>
       </div>
       <div class="planner">
         <div class="days" role="tablist" aria-label="Days of the week" id="days"></div>
@@ -153,17 +226,98 @@
     </div>
   </section>
 
-  <section class="steps" aria-labelledby="steps-title">
-    <div class="wrap steps-grid">
+  <section class="chapter" id="wardrobe" aria-labelledby="wardrobe-title">
+    <div class="wrap pair flip">
       <div>
-        <h2 id="steps-title">From a selfie to a planned week</h2>
-        <ol>
-          <li><div><h3>Create your avatar</h3><p>Add a few photos of yourself and FitMe builds a full-length avatar that looks like you.</p></div></li>
-          <li><div><h3>Add your clothes</h3><p>Photograph what is in your wardrobe, or save a piece you are thinking of buying.</p></div></li>
-          <li><div><h3>Try on and plan</h3><p>See any combination on your avatar, keep the ones you like and give each day its outfit.</p></div></li>
-        </ol>
+        <h2 id="wardrobe-title">From a photo, to your wardrobe.</h2>
+        <p class="measure">Choose a clothing photo or a screenshot. FitMe removes the background, works out what the item is and files it for you. You only confirm the category.</p>
+        <ul class="points">
+          <li><strong>Everything in one place.</strong> Coats, shoes, bags and knitwear, sorted and easy to find.</li>
+          <li><strong>Details filled in.</strong> Category, type, colour and material are read from the photo.</li>
+          <li><strong>See what suits you.</strong> After a colour analysis, filter your wardrobe by the pieces that match your palette.</li>
+        </ul>
       </div>
-      <img class="shot" src="assets/screen-tryon.jpg" alt="The FitMe try-on screen showing an avatar wearing a pink suit, with buttons to keep the piece or try a new outfit." width="660" height="1434" loading="lazy" />
+      <img class="shot" src="assets/screen-wardrobe.jpg" alt="The FitMe wardrobe showing 92 items, including a scarf, coat, boots, sweater, skirt and shoulder bag, with filters for your colours." width="660" height="1434" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="chapter rule" aria-labelledby="ways-title">
+    <div class="wrap">
+      <h2 id="ways-title">Three ways to decide faster</h2>
+      <p class="measure">When you know one thing and need the rest, FitMe builds the outfit from what you own. You review the suggestions first, and only try on the ones you like.</p>
+      <div class="ways">
+        <div><h3>Keep this piece</h3><p>Lock the pieces you want to wear and FitMe suggests the rest of the outfit from your wardrobe.</p></div>
+        <div><h3>Should I buy it?</h3><p>Add a photo of something you are considering and see up to three ways to wear it with what you already have.</p></div>
+        <div><h3>Recreate a look</h3><p>Add an outfit photo you love and find similar combinations in your own wardrobe, with clear substitutions.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter rule" id="stylist" aria-labelledby="stylist-title">
+    <div class="wrap pair">
+      <div>
+        <h2 id="stylist-title">A stylist who knows your closet.</h2>
+        <p class="measure">Ask what to wear to work, on a date or at the weekend. The AI stylist answers with outfits made from pieces you own, and you can send any of them straight to try-on.</p>
+        <ul class="points">
+          <li><strong>Start from an occasion.</strong> Date night, work outfit, casual look or something trendy.</li>
+          <li><strong>Or ask anything.</strong> Colour combinations, what goes with a piece, how to dress something up.</li>
+        </ul>
+      </div>
+      <img class="shot" src="assets/screen-stylist.jpg" alt="The FitMe AI stylist chat offering to style your wardrobe, with shortcuts for colour advice, casual look, date night, work outfit and trendy look." width="660" height="1434" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="chapter rule" id="colors" aria-labelledby="colors-title">
+    <div class="wrap pair flip">
+      <div>
+        <h2 id="colors-title">Find the colours that are yours.</h2>
+        <p class="measure">One clear photo of your face is all it takes. FitMe reads your skin undertone, hair and eyes, then gives you your season, the shades that make you look rested and the ones that wash you out.</p>
+        <div class="swatches" aria-label="Example palette for a Warm Autumn result">
+          <div><span style="background:#6b8e23"></span><small>Olive green</small></div>
+          <div><span style="background:#b7410e"></span><small>Rust</small></div>
+          <div><span style="background:#ffdb58"></span><small>Mustard yellow</small></div>
+          <div><span style="background:#134e5e"></span><small>Deep warm teal</small></div>
+          <div><span style="background:#7b3f00"></span><small>Chocolate brown</small></div>
+          <div><span style="background:#e2725b"></span><small>Terracotta</small></div>
+          <div><span style="background:#c19a6b"></span><small>Camel</small></div>
+          <div><span style="background:#daa520"></span><small>Goldenrod</small></div>
+        </div>
+        <p class="note" style="margin-top:18px">An example result: Warm Autumn. Your first analysis is free.</p>
+      </div>
+      <img class="shot" src="assets/screen-color.jpg" alt="A FitMe colour analysis result: Warm Autumn, warm undertone, medium contrast, gold metals, with a palette of recommended colours." width="660" height="1434" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="chapter rule" aria-labelledby="room-title">
+    <div class="wrap pair">
+      <div>
+        <h2 id="room-title">Lay it out first.</h2>
+        <p class="measure">The dressing room is a canvas for your clothes. Add pieces to it, mix and match, and see whether the outfit holds together before you try it on. Save the ones worth keeping.</p>
+      </div>
+      <img class="canvas" src="assets/dressing-canvas.jpg" alt="A dressing room canvas with a cream sweater, brown coat, wide-leg jeans, brown boots and a black bag laid out together." width="900" height="1401" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="chapter rule steps" aria-labelledby="steps-title">
+    <div class="wrap">
+      <h2 id="steps-title">From a selfie to a planned week</h2>
+      <ol>
+        <li><h3>Create your avatar</h3><p>Add one clear photo of yourself and FitMe builds a full-length avatar that looks like you.</p></li>
+        <li><h3>Add your clothes</h3><p>Photograph what is in your wardrobe, or save a piece you are thinking of buying.</p></li>
+        <li><h3>Try on and plan</h3><p>See any combination on your avatar, keep the ones you like and give each day its outfit.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="chapter rule" aria-labelledby="faq-title">
+    <div class="wrap faq">
+      <h2 id="faq-title">Good to know</h2>
+      <details><summary>What do I need to get started?</summary><p>An iPhone and one clear photo of yourself. FitMe turns it into your avatar, and you can start trying outfits on as soon as it is ready.</p></details>
+      <details><summary>Do I have to photograph my whole wardrobe?</summary><p>No. Start with a few pieces, from a photo or a screenshot. FitMe removes the background and identifies each item, so adding more takes a moment.</p></details>
+      <details><summary>Can I close the app while a look is being made?</summary><p>Yes. Your look keeps generating after you leave, and FitMe can notify you when it is ready.</p></details>
+      <details><summary>Is FitMe free?</summary><p>FitMe is free to download. Try-ons use credits, and some features, such as the AI stylist, are part of FitMe Pro. Prices are shown in the app before you buy anything.</p></details>
+      <details><summary>Which languages does FitMe speak?</summary><p>The app is available in 27 languages.</p></details>
+      <details><summary>What happens to my photos?</summary><p>Your photos are used to create your avatar and your looks. The details, including which services process them, are in the <a href="privacy.html">Privacy Policy</a>.</p></details>
     </div>
   </section>
 
@@ -210,7 +364,7 @@
     b.addEventListener("click", function () { pick(i); });
     days.appendChild(b);
     var im = document.createElement("img");
-    im.src = "assets/look-" + d[4] + ".jpg"; im.alt = "Avatar wearing " + d[5] + "."; im.loading = i ? "lazy" : "eager";
+    im.src = "assets/look-" + d[4] + ".jpg"; im.alt = "Avatar wearing " + d[5] + "."; im.loading = "lazy";
     look.appendChild(im);
   });
   function pick(i) {
